@@ -15,6 +15,11 @@
     "gulp-nodemon": "^2.1.0"
   },
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "express-jwt": "^5.1.0",
+    "jsonwebtoken": "^7.3.0",
+    "mongoose": "^4.9.0",
+    "passport": "^0.3.2",
+    "passport-facebook-token": "^3.3.0"
   }
 }
