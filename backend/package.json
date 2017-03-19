@@ -1,0 +1,20 @@
+{
+  "name": "fb-demo",
+  "version": "0.0.1",
+  "description": "Demo application that shows how to enable Facebook login on Express/Node.js backend when creating REST API",
+  "keywords": [
+    "node.js",
+    "express.js",
+    "facebook-login"
+  ],
+  "author": "Ivan Vasiljevic",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-nodemon": "^2.1.0"
+  },
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
