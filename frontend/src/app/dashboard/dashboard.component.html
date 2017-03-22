@@ -1,3 +1,21 @@
-<p>
-  dashboard works!
-</p>
+<div class="navbar navbar-default navbar-fixed-top">
+  <ul class="nav navbar-nav navbar-right">
+    <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a></li>
+  </ul>
+</div>
+
+<div class="page-header"></div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-8 col-md-7 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">Our Awesome application</div>
+        <div class="panel-body" align="center">
+          Current User email: {{ currentUser.email }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public currentUser : any = {};
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.userService.getCurrentUser().then(profile => this.currentUser = profile)
+        .catch(() => this.currentUser = {});
+  }
+
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['/welcome']);
   }
 
 }

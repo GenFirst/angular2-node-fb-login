@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   }
 
   fbLogin() {
-    console.log('Login button hes been pressed')
     this.userService.fbLogin().then(() => {
       console.log('User has been logged in');
       this.router.navigate(['/dashboard']);

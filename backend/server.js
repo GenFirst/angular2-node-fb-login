@@ -1,20 +1,41 @@
 'use strict';
 
-
 //mongoose file must be loaded before all other files in order to provide
 // models to other modules
 var mongoose = require('./mongoose'),
-  express = require('express'),
   passport = require('passport'),
+  express = require('express'),
   jwt = require('jsonwebtoken'),
   expressJwt = require('express-jwt'),
-  router = express.Router();
+  router = express.Router(),
+  cors = require('cors'),
+  bodyParser = require('body-parser');
 
 mongoose();
 
 var User = require('mongoose').model('User');
+var passportConfig = require('./passport');
+
+//setup configuration for facebook login
+passportConfig();
 
 var app = express();
+
+// enable cors
+var corsOption = {
+  origin: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  exposedHeaders: ['x-auth-token']
+};
+app.use(cors(corsOption));
+
+//rest API requirements
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
 router.route('/health-check').get(function(req, res) {
   res.status(200);
   res.send('Hello World');
@@ -23,7 +44,8 @@ router.route('/health-check').get(function(req, res) {
 var createToken = function(auth) {
   return jwt.sign({
     id: auth.id
-  }, config.jwtSecret, {
+  }, 'my-secret',
+  {
     expiresIn: 60 * 120
   });
 };
